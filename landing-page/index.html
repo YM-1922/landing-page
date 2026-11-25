@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Flow | حلول ذكية لمشاكل أرضك ومياهك</title>
+  <meta name="description" content="Green Flow حل متكامل للزراعة الذكية وإنترنت الأشياء الزراعي: مراقبة ملوحة التربة، تحليل ومعالجة ملوحة مياه الري، ونظام ري ذكي يوفر المياه ويقلل الهدر." />
+  <meta name="keywords" content="Green Flow, الزراعة الذكية, ري ذكي, ملوحة التربة, معالجة مياه الري, حساسات زراعية, IoT زراعي" />
+  <meta name="theme-color" content="#145328" />
+
+  <!-- Open Graph / Social Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:title" content="Green Flow | حلول ذكية لمشاكل أرضك ومياهك" />
+  <meta property="og:description" content="بنحدد احتياجات مزرعتك ونوفر لك الحل المناسب: مراقبة ملوحة التربة، معالجة ملوحة مياه الري، ونظام ري ذكي." />
+
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23145328'/%3E%3Cpath d='M48 16C31 16 18 26 16 44c-.3 2.5 1.7 4.4 4.1 4.1C38 46 48 33 48 16Z' fill='%2363c754'/%3E%3Cpath d='M18 46c7-8 15-15 24-21' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Cairo & Plus Jakarta Sans for clean Arabic + Latin brand pairing -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo" aria-label="Green Flow الرئيسية">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M33.5 6.5C20.2 6.5 9.8 14.3 8.2 28.4c-.2 1.9 1.3 3.4 3.2 3.2C25.5 30 33.5 19.8 33.5 6.5Z" fill="url(#gfLeafGrad)"/>
+            <path d="M9.5 30.5c5.8-6.4 12.2-12 20-17" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M18.5 22.5c3.2.2 5.6 0 8-.8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/>
+            <defs>
+              <linearGradient id="gfLeafGrad" x1="8" y1="31" x2="34" y2="7" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#227636"/>
+                <stop offset="1" stop-color="#62C74F"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand-name" dir="ltr">Green Flow</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="التنقل الرئيسي">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+          <li><a href="#about" class="nav-link">عن المشروع</a></li>
+          <li><a href="#services" class="nav-link">خدماتنا</a></li>
+          <li><a href="#features" class="nav-link">مميزاتنا</a></li>
+          <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <a href="#download" class="btn btn-primary btn-block nav-mobile-cta">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m22 2-7 20-4-9-9-4Z"/>
+              <path d="M22 2 11 13"/>
+            </svg>
+            <span>ابدأ الآن</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#download" class="btn btn-primary nav-cta" id="navStartBtn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m22 2-7 20-4-9-9-4Z"/>
+            <path d="M22 2 11 13"/>
+          </svg>
+          <span>ابدأ الآن</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-section" id="home">
+      <div class="hero-backdrop">
+        <img
+          src="assets/images/hero-farm.jpg"
+          alt="مزرعة خضراء مزودة بجهاز استشعار ذكي يعمل بالطاقة الشمسية من Green Flow"
+          class="hero-bg-img"
+          fetchpriority="high"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content reveal">
+          <div class="hero-heading-wrap">
+            <span class="hero-leaf-accent" aria-hidden="true">
+              <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M36 6C21 6 10 15 8 31c-.3 2.1 1.4 3.8 3.5 3.5C27.5 32.5 36 21 36 6Z" fill="url(#heroLeaf)"/>
+                <path d="M10 33c6-7 13-13 21-18" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" opacity="0.9"/>
+                <defs>
+                  <linearGradient id="heroLeaf" x1="8" y1="34" x2="36" y2="6" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2E8B42"/>
+                    <stop offset="1" stop-color="#70D157"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <h1 class="hero-title">حلول ذكية لمشاكل أرضك ومياهك</h1>
+            <svg class="title-swoosh" viewBox="0 0 420 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M412 10C300 2 140 5 8 18" stroke="url(#swooshGrad)" stroke-width="4.5" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="swooshGrad" x1="412" y1="10" x2="8" y2="18" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#3CA04B"/>
+                  <stop offset="0.65" stop-color="#65C656"/>
+                  <stop offset="1" stop-color="#A5DF98" stop-opacity="0.25"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <p class="hero-description">
+            بنحدد احتياجات مزرعتك ونوفر لك الحل المناسب: مراقبة ملوحة التربة، معالجة ملوحة مياه الري، ونظام ري ذكي يوفر المياه ويقلل الهدر.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THREE MAIN SERVICES + CTA BUTTONS ================= -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="services-grid">
+          <!-- Card 1: Smart Irrigation -->
+          <article class="service-card reveal" style="--delay: 0ms;">
+            <div class="service-pill-header">
+              <span>بتستهلك مياه كتير؟</span>
+              <span class="service-pill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.5 4.5C12.2 4.5 6.4 8.9 5.4 16.8c-.1 1 .7 1.8 1.7 1.7 7.9-1 12.4-6.8 12.4-14Zm-11.2 12c2.8-3.2 5.9-6 9.5-8.4-3.1 2.9-5.8 5.9-8 9.2l-1.5-.8Z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="service-image-wrap">
+              <img
+                src="assets/images/service-irrigation.jpg"
+                alt="نظام ري ذكي بالتنقيط مع حساس رطوبة لاسلكي في التربة"
+                loading="lazy"
+              />
+            </div>
+            <div class="service-body">
+              <p class="service-desc">
+                نوفر نظام ري ذكي يحدد احتياج الأرض للمياه ويقلل الهدر.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 2: Water Salinity -->
+          <article class="service-card reveal" style="--delay: 100ms;">
+            <div class="service-pill-header">
+              <span>ملوحة في مياه الري؟</span>
+              <span class="service-pill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.7c-.4 0-.8.2-1 .5C8.1 7 5.5 10.6 5.5 14a6.5 6.5 0 0 0 13 0c0-3.4-2.6-7-5.5-10.8-.2-.3-.6-.5-1-.5Zm-2.5 12.8a.9.9 0 0 1-1.3-.3 4.2 4.2 0 0 1-.4-2.2.9.9 0 1 1 1.8.2c-.1.5 0 1 .2 1.4.2.4 0 .8-.3.9Z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="service-image-wrap">
+              <img
+                src="assets/images/service-water.jpg"
+                alt="تحليل ملوحة مياه الري وتوفير نظام المعالجة المناسب"
+                loading="lazy"
+              />
+            </div>
+            <div class="service-body">
+              <p class="service-desc">
+                نحلل ملوحة المياه ونوفر نظام المعالجة المناسب حسب النتيجة.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 3: Soil Salinity -->
+          <article class="service-card reveal" style="--delay: 200ms;">
+            <div class="service-pill-header">
+              <span>عندك ملوحة في التربة؟</span>
+              <span class="service-pill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3c-.3 0-.7.2-.9.5-2.3 3-4.6 6-4.6 9a5.5 5.5 0 0 0 11 0c0-3-2.3-6-4.6-9-.2-.3-.6-.5-.9-.5Zm0 12.5a2.5 2.5 0 0 1-2.5-2.5h5a2.5 2.5 0 0 1-2.5 2.5Z"/>
+                  <path d="M4.5 19.5h15a1 1 0 1 1 0 2h-15a1 1 0 1 1 0-2Z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="service-image-wrap">
+              <img
+                src="assets/images/service-soil.jpg"
+                alt="حساس رقمي لقياس ملوحة التربة EC 2.1 dS/m مغروس في التربة"
+                loading="lazy"
+              />
+            </div>
+            <div class="service-body">
+              <p class="service-desc">
+                نركب حساسات تقيس ملوحة التربة وتتابع حالتها باستمرار.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- CTA Buttons below the 3 service cards -->
+        <div class="services-cta-band">
+          <span class="floating-leaf leaf-right" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M54 10C32 10 14 24 12 48c-.4 3 2.2 5.4 5.2 5C41 50 54 32 54 10Z" fill="url(#leafR)"/>
+              <path d="M15 50c9-10 19-19 32-27" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+              <defs>
+                <linearGradient id="leafR" x1="12" y1="53" x2="54" y2="10" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#2B843B"/>
+                  <stop offset="1" stop-color="#7AD663"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+
+          <div class="cta-buttons-group reveal">
+            <button type="button" class="btn btn-primary btn-lg open-inspection-modal" id="requestInspectionBtn">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+              </svg>
+              <span>اطلب معاينة لمزرعتك</span>
+            </button>
+
+            <a href="#about" class="btn btn-outline btn-lg" id="learnServicesBtn">
+              <span>اعرف خدماتنا</span>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M19 12H5"/>
+                <path d="m12 19-7-7 7-7"/>
+              </svg>
+            </a>
+          </div>
+
+          <span class="floating-leaf leaf-left" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M10 10C32 10 50 24 52 48c.4 3-2.2 5.4-5.2 5C23 50 10 32 10 10Z" fill="url(#leafL)"/>
+              <path d="M49 50c-9-10-19-19-32-27" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+              <defs>
+                <linearGradient id="leafL" x1="52" y1="53" x2="10" y2="10" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#2B843B"/>
+                  <stop offset="1" stop-color="#7AD663"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES SECTION ================= -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="features-panel reveal">
+          <div class="section-heading-lined">
+            <span class="heading-line" aria-hidden="true"></span>
+            <h2>مميزات <span dir="ltr">Green Flow</span></h2>
+            <span class="heading-line" aria-hidden="true"></span>
+          </div>
+
+          <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-item">
+              <div class="feature-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                  <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+                  <path d="M4 4a8 8 0 0 0-2 4"/>
+                  <path d="M20 4a8 8 0 0 1 2 4"/>
+                </svg>
+              </div>
+              <h3>تنبيهات فورية وتقارير دقيقة.</h3>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-item">
+              <div class="feature-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 14l6-6 4 4 7-7"/>
+                  <path d="M16 5h4v4"/>
+                  <rect x="4" y="17" width="3" height="4" rx="0.5" fill="currentColor" stroke="none"/>
+                  <rect x="10.5" y="15" width="3" height="6" rx="0.5" fill="currentColor" stroke="none"/>
+                  <rect x="17" y="11" width="3" height="10" rx="0.5" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
+              <h3>تحسين كفاءة الري.</h3>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-item">
+              <div class="feature-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.5c-.4 0-.8.2-1.1.6C7.8 7.1 5 11 5 14.7A7 7 0 0 0 19 14.7c0-3.7-2.8-7.6-5.9-11.6-.3-.4-.7-.6-1.1-.6Zm-2.6 13.7a1 1 0 0 1-1.3-.4 4.5 4.5 0 0 1-.4-2.3 1 1 0 1 1 2 .2c-.1.5 0 1 .2 1.4.2.5 0 .9-.5 1.1Z"/>
+                  <circle cx="19.5" cy="7.5" r="1.3"/>
+                  <circle cx="21" cy="11.5" r="0.9"/>
+                </svg>
+              </div>
+              <h3>توفير المياه.</h3>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-item">
+              <div class="feature-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="9" cy="6" rx="5" ry="2.2" fill="currentColor" fill-opacity="0.15"/>
+                  <path d="M4 6v4c0 1.2 2.2 2.2 5 2.2s5-1 5-2.2V6"/>
+                  <path d="M4 10v4c0 1.2 2.2 2.2 5 2.2s5-1 5-2.2v-4"/>
+                  <path d="M4 14v4c0 1.2 2.2 2.2 5 2.2s5-1 5-2.2v-4"/>
+                  <ellipse cx="16.5" cy="12" rx="4.5" ry="2" fill="currentColor" fill-opacity="0.15"/>
+                  <path d="M12 12v3.5c0 1.1 2 2 4.5 2s4.5-.9 4.5-2V12"/>
+                  <path d="M12 15.5V19c0 1.1 2 2 4.5 2s4.5-.9 4.5-2v-3.5"/>
+                </svg>
+              </div>
+              <h3>تقليل التكاليف.</h3>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-item">
+              <div class="feature-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9" stroke-opacity="0.25"/>
+                  <path d="M12 20v-8"/>
+                  <path d="M12 13c0-3.5 2.5-6 6-6 0 3.5-2.5 6-6 6Z" fill="currentColor" fill-opacity="0.18"/>
+                  <path d="M12 15c0-3-2.2-5.2-5.2-5.2 0 3 2.2 5.2 5.2 5.2Z" fill="currentColor" fill-opacity="0.18"/>
+                  <path d="M8 20h8"/>
+                </svg>
+              </div>
+              <h3>دعم الزراعة المستدامة.</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT GREEN FLOW SECTION ================= -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content reveal">
+            <span class="section-badge">عن مشروع <span dir="ltr">Green Flow</span></span>
+            <h2 class="section-title">منظومة زراعية متكاملة تربط أرضك بالموبايل</h2>
+            <p class="about-lead">
+              <strong>Green Flow</strong> هو حل تقني زراعي متكامل يعتمد على إنترنت الأشياء (IoT) لربط حساسات التربة والمياه، أنظمة الري الذكية ووحدات معالجة الملوحة، مع تطبيق هاتف ذكي يمنح المزارعين رؤية لحظية ودقيقة لحالة مزارعهم لاتخاذ قرارات ري وتسميد أفضل.
+            </p>
+
+            <div class="about-pillars">
+              <div class="pillar-card">
+                <div class="pillar-num">01</div>
+                <div class="pillar-text">
+                  <h3>قياس مستمر ودقيق</h3>
+                  <p>حساسات ميدانية تعمل بالطاقة الشمسية لمتابعة ملوحة التربة (EC) ورطوبتها وجودة مياه الري على مدار الساعة.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-num">02</div>
+                <div class="pillar-text">
+                  <h3>معالجة وتحكم ذكي</h3>
+                  <p>تشخيص فوري لمشاكل المياه والتربة مع تشغيل محابس الري الذكي وفق احتياج المحصول الفعلي.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-num">03</div>
+                <div class="pillar-text">
+                  <h3>متابعة كاملة من التطبيق</h3>
+                  <p>لوحة تحكم عربية واضحة على هاتفك تعرض القراءات والتقارير والتنبيهات الفورية في أي وقت.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Farm IoT Ecosystem Dashboard Preview -->
+          <div class="about-visual reveal" style="--delay: 120ms;">
+            <div class="telemetry-card">
+              <div class="telemetry-header">
+                <div class="telemetry-title-group">
+                  <span class="live-dot" aria-hidden="true"></span>
+                  <span>لوحة مراقبة المزرعة المباشرة</span>
+                </div>
+                <span class="telemetry-zone-pill" id="zoneBadge">قطاع أ - محصول خضروات</span>
+              </div>
+
+              <div class="zone-tabs" role="tablist" aria-label="اختر قطاع المزرعة">
+                <button type="button" class="zone-tab active" data-zone="a" role="tab" aria-selected="true">قطاع أ</button>
+                <button type="button" class="zone-tab" data-zone="b" role="tab" aria-selected="false">قطاع ب</button>
+                <button type="button" class="zone-tab" data-zone="c" role="tab" aria-selected="false">محطة المياه</button>
+              </div>
+
+              <div class="telemetry-metrics">
+                <div class="metric-box">
+                  <span class="metric-label">ملوحة التربة (EC)</span>
+                  <strong class="metric-value" id="metricEc" dir="ltr">2.1 dS/m</strong>
+                  <span class="metric-status status-good" id="statusEc">ضمن المعدل الآمن</span>
+                </div>
+
+                <div class="metric-box">
+                  <span class="metric-label">رطوبة التربة</span>
+                  <strong class="metric-value" id="metricMoisture" dir="ltr">68%</strong>
+                  <span class="metric-status status-good" id="statusMoisture">رطوبة مثالية</span>
+                </div>
+
+                <div class="metric-box">
+                  <span class="metric-label">ملوحة مياه الري</span>
+                  <strong class="metric-value" id="metricWater" dir="ltr">420 ppm</strong>
+                  <span class="metric-status status-good" id="statusWater">مياه معالجة</span>
+                </div>
+
+                <div class="metric-box">
+                  <span class="metric-label">نظام الري الذكي</span>
+                  <strong class="metric-value" id="metricPump">نشط تلقائياً</strong>
+                  <span class="metric-status status-info" id="statusPump">توفير 34% مياه</span>
+                </div>
+              </div>
+
+              <div class="telemetry-footer">
+                <div class="ecosystem-flow">
+                  <span class="flow-chip">الحساسات الميدانية</span>
+                  <span class="flow-arrow" aria-hidden="true">←</span>
+                  <span class="flow-chip">الري والمعالجة</span>
+                  <span class="flow-arrow" aria-hidden="true">←</span>
+                  <span class="flow-chip active">تطبيق <span dir="ltr">Green Flow</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= APP DOWNLOAD SECTION ================= -->
+    <section class="download-section" id="download">
+      <div class="container">
+        <div class="download-card reveal">
+          <div class="download-content">
+            <span class="section-badge badge-light">تطبيق الهاتف الذكي</span>
+            <h2 class="download-title">حمّل تطبيق <span dir="ltr">Green Flow</span> الآن</h2>
+            <p class="download-desc">
+              تابع مزرعتك وتحكم في نظامك الذكي من موبايلك. راقب قراءات التربة والمياه، استقبل التنبيهات الفورية، وأدر جداول الري بضغطة زر.
+            </p>
+
+            <ul class="app-highlights">
+              <li>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>متابعة حية لقراءات حساسات التربة والمياه</span>
+              </li>
+              <li>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>تنبيهات فورية عند ارتفاع الملوحة أو الحاجة للري</span>
+              </li>
+              <li>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>تقارير استهلاك المياه وتوصيات زراعية ذكية</span>
+              </li>
+            </ul>
+
+            <div class="store-buttons">
+              <!-- Android Download Button (Direct APK Link) -->
+              <a
+                href="https://drive.google.com/uc?export=download&id=19Hj6w18eWMyC7LuogoYVH0ONl2e9Zcc1"
+                class="store-btn store-btn-android"
+                id="androidDownloadBtn"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+              >
+                <span class="store-icon" aria-hidden="true">
+                  <!-- Android Robot Icon -->
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.83.22l-1.88 3.24a11.43 11.43 0 0 0-8.94 0L5.65 5.67a.643.643 0 0 0-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/>
+                  </svg>
+                </span>
+                <span class="store-text">
+                  <small>تحميل مباشر لأجهزة</small>
+                  <strong>Android (APK)</strong>
+                </span>
+                <span class="store-action-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                </span>
+              </a>
+
+              <!-- iOS Button (Coming Soon - Never downloads APK) -->
+              <button
+                type="button"
+                class="store-btn store-btn-ios"
+                id="iosComingSoonBtn"
+                aria-label="نسخة iOS قريباً"
+              >
+                <span class="store-icon" aria-hidden="true">
+                  <!-- Apple Icon -->
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/>
+                  </svg>
+                </span>
+                <span class="store-text">
+                  <small>نسخة الآيفون (iOS)</small>
+                  <strong>قريباً</strong>
+                </span>
+                <span class="coming-soon-badge">قريباً</span>
+              </button>
+            </div>
+
+            <div class="ios-notice" id="iosNotice" role="status" aria-live="polite" hidden>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4M12 8h.01"/>
+              </svg>
+              <span>نسخة iOS قيد التطوير وستتوفر <strong>قريباً</strong> على App Store. يمكنك حالياً تحميل نسخة Android والاستفادة من كافة المزايا.</span>
+            </div>
+          </div>
+
+          <!-- Phone App Mockup -->
+          <div class="download-mockup" aria-hidden="true">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="app-topbar">
+                  <div class="app-user">
+                    <span class="app-avatar">GF</span>
+                    <div>
+                      <strong>مزرعة الوادي الأخضر</strong>
+                      <small>متصل بالمحطة الشمسية</small>
+                    </div>
+                  </div>
+                  <span class="app-status-pill">مباشر</span>
+                </div>
+
+                <div class="app-hero-widget">
+                  <div class="app-widget-head">
+                    <span>حالة التربة والمياه</span>
+                    <span class="app-good-tag">ممتازة</span>
+                  </div>
+                  <div class="app-stats-row">
+                    <div class="app-stat">
+                      <small>ملوحة التربة</small>
+                      <strong dir="ltr">2.1 dS/m</strong>
+                    </div>
+                    <div class="app-stat">
+                      <small>ملوحة المياه</small>
+                      <strong dir="ltr">420 ppm</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="app-control-card">
+                  <div class="app-control-row">
+                    <div>
+                      <strong>نظام الري الذكي</strong>
+                      <small>توفير اليوم: 34% من المياه</small>
+                    </div>
+                    <span class="app-toggle-on"></span>
+                  </div>
+                  <div class="app-progress-bar">
+                    <span style="width: 72%"></span>
+                  </div>
+                </div>
+
+                <div class="app-alert-mini">
+                  <span class="alert-dot"></span>
+                  <span>تم فحص جودة مياه الخزان الرئيسي بنجاح</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA BANNER ================= -->
+    <section class="final-cta-section" id="contact">
+      <div class="container">
+        <div class="final-cta-banner reveal">
+          <img
+            src="assets/images/cta-farm-banner.jpg"
+            alt="أرض زراعية خضراء مستدامة تروى بنظام Green Flow"
+            class="final-cta-bg"
+            loading="lazy"
+          />
+          <div class="final-cta-overlay"></div>
+
+          <span class="banner-leaf-decor" aria-hidden="true">
+            <svg viewBox="0 0 110 100" fill="none">
+              <path d="M98 14C58 14 26 38 22 80c-.6 5 3.6 9.2 8.6 8.6C73 84 98 52 98 14Z" fill="url(#bannerLeaf1)"/>
+              <path d="M52 24C30 34 16 56 18 84c.4 3.5 3.5 5.8 6.8 5 25-6 36-30 27.2-65Z" fill="url(#bannerLeaf2)" opacity="0.9"/>
+              <defs>
+                <linearGradient id="bannerLeaf1" x1="22" y1="88" x2="98" y2="14" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#2F8E3F"/>
+                  <stop offset="1" stop-color="#7EE062"/>
+                </linearGradient>
+                <linearGradient id="bannerLeaf2" x1="18" y1="88" x2="54" y2="24" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#1E6C2E"/>
+                  <stop offset="1" stop-color="#58C44B"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+
+          <div class="final-cta-inner">
+            <div class="final-cta-text">
+              <h2>مع <span dir="ltr">Green Flow</span> .. مزرعتك في أمان</h2>
+              <p>نحو زراعة أذكى .. ومستقبل أخضر</p>
+            </div>
+
+            <button type="button" class="btn btn-cta-banner open-inspection-modal" id="finalContactBtn">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
+              </svg>
+              <span>تواصل معنا</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand-logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M33.5 6.5C20.2 6.5 9.8 14.3 8.2 28.4c-.2 1.9 1.3 3.4 3.2 3.2C25.5 30 33.5 19.8 33.5 6.5Z" fill="#5CC54F"/>
+              <path d="M9.5 30.5c5.8-6.4 12.2-12 20-17" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-name" dir="ltr">Green Flow</span>
+        </a>
+        <p class="footer-tagline">
+          تكنولوجيا زراعية ذكية لمراقبة ملوحة التربة، معالجة مياه الري، وتوفير المياه لرفع إنتاجية مزرعتك.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h3>روابط سريعة</h3>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#about">عن المشروع</a></li>
+          <li><a href="#services">خدماتنا</a></li>
+          <li><a href="#features">مميزاتنا</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h3>التطبيق والخدمات</h3>
+        <ul>
+          <li><a href="#download">تحميل تطبيق Android</a></li>
+          <li><a href="#services">نظام الري الذكي</a></li>
+          <li><a href="#services">معالجة ملوحة المياه</a></li>
+          <li><button type="button" class="footer-link-btn open-inspection-modal">اطلب معاينة لمزرعتك</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="currentYear">2026</span> <span dir="ltr">Green Flow</span>. جميع الحقوق محفوظة — نحو زراعة أذكى ومستقبل أخضر.</p>
+    </div>
+  </footer>
+
+  <!-- ================= INSPECTION & CONTACT MODAL ================= -->
+  <div class="modal-backdrop" id="inspectionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-dialog">
+      <button type="button" class="modal-close" id="closeModalBtn" aria-label="إغلاق النافذة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <span class="section-badge">طلب معاينة واستشارة</span>
+        <h2 id="modalTitle">اطلب معاينة لمزرعتك</h2>
+        <p>أدخل بيانات مزرعتك وسيتواصل معك مهندسو <span dir="ltr">Green Flow</span> لتحديد النظام الأنسب لأرضك ومياهك.</p>
+      </div>
+
+      <form class="inspection-form" id="inspectionForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="farmerName">الاسم بالكامل</label>
+            <input type="text" id="farmerName" name="farmerName" placeholder="مثال: أحمد محمد" required />
+          </div>
+          <div class="form-group">
+            <label for="farmerPhone">رقم الهاتف / واتساب</label>
+            <input type="tel" id="farmerPhone" name="farmerPhone" placeholder="01xxxxxxxxx" dir="ltr" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="farmLocation">المحافظة / الموقع</label>
+            <input type="text" id="farmLocation" name="farmLocation" placeholder="مثال: المنيا / وادي النطرون" required />
+          </div>
+          <div class="form-group">
+            <label for="serviceNeed">المشكلة الأساسية</label>
+            <select id="serviceNeed" name="serviceNeed" required>
+              <option value="">اختر الخدمة المطلوبة</option>
+              <option value="irrigation">استهلاك مياه مرتفع (نظام ري ذكي)</option>
+              <option value="water-salinity">ملوحة في مياه الري (تحليل ومعالجة)</option>
+              <option value="soil-salinity">ملوحة في التربة (تركيب حساسات ومتابعة)</option>
+              <option value="full-package">منظومة متكاملة للمزرعة</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="farmNotes">ملاحظات إضافية (مساحة المزرعة أو نوع المحصول)</label>
+          <textarea id="farmNotes" name="farmNotes" rows="3" placeholder="اكتب المساحة التقريبية أو أي تفاصيل إضافية..."></textarea>
+        </div>
+
+        <div class="form-feedback" id="formFeedback" role="status" aria-live="polite" hidden></div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <span>إرسال طلب المعاينة</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
