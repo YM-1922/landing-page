@@ -179,23 +179,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 6. Farm Inspection & Contact Modal
+  // 6. Farm Inspection & Contact Modal (Google Apps Script Integration)
   const modal = document.getElementById("inspectionModal");
   const openModalBtns = document.querySelectorAll(".open-inspection-modal");
   const closeModalBtn = document.getElementById("closeModalBtn");
   const inspectionForm = document.getElementById("inspectionForm");
   const formFeedback = document.getElementById("formFeedback");
+  const submitBtn = document.getElementById("submitInspectionBtn") || (inspectionForm ? inspectionForm.querySelector('button[type="submit"]') : null);
+  const submitBtnText = document.getElementById("submitBtnText") || (submitBtn ? submitBtn.querySelector("span") : null);
+
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOGKMGak4JKRczcuQqNPTOh9kkMoVLgzpXYJwTI7deZ7rr0Y6mjPFSkrmcU8d-uqAh/exec";
+
+  let isSubmitting = false;
 
   function openModal() {
     if (!modal) return;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
+    if (formFeedback) {
+      formFeedback.hidden = true;
+      formFeedback.textContent = "";
+      formFeedback.className = "form-feedback";
+    }
     const firstInput = document.getElementById("farmerName");
     if (firstInput) firstInput.focus();
   }
 
   function closeModal() {
     if (!modal) return;
+    if (isSubmitting) return; // Prevent closing while request is in flight
     modal.hidden = true;
     document.body.style.overflow = "";
   }
@@ -220,35 +232,163 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  function showFormError(message, inputToFocus) {
+    if (formFeedback) {
+      formFeedback.textContent = message;
+      formFeedback.className = "form-feedback error";
+      formFeedback.hidden = false;
+    }
+    if (inputToFocus) {
+      inputToFocus.focus();
+    }
+  }
+
+  function toggleFormState(loading) {
+    if (submitBtn) {
+      submitBtn.disabled = loading;
+      if (loading) {
+        submitBtn.setAttribute("aria-busy", "true");
+        submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span><span>جاري إرسال الطلب...</span>';
+      } else {
+        submitBtn.removeAttribute("aria-busy");
+        submitBtn.innerHTML = '<span id="submitBtnText">إرسال طلب المعاينة</span>';
+      }
+    }
+
+    if (inspectionForm) {
+      const formElements = inspectionForm.querySelectorAll("input, select, textarea");
+      formElements.forEach((el) => {
+        el.disabled = loading;
+      });
+    }
+  }
+
   if (inspectionForm) {
-    inspectionForm.addEventListener("submit", (event) => {
+    inspectionForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      const name = document.getElementById("farmerName").value.trim();
-      const phone = document.getElementById("farmerPhone").value.trim();
-      const location = document.getElementById("farmLocation").value.trim();
-      const service = document.getElementById("serviceNeed").value;
+      if (isSubmitting) return;
 
-      if (!name || !phone || !location || !service) {
-        formFeedback.textContent = "برجاء استكمال كافة الحقول المطلوبة لإرسال طلب المعاينة.";
-        formFeedback.className = "form-feedback error";
-        formFeedback.hidden = false;
+      const nameInput = document.getElementById("farmerName");
+      const phoneInput = document.getElementById("farmerPhone");
+      const locationInput = document.getElementById("farmLocation");
+      const serviceSelect = document.getElementById("serviceNeed");
+      const notesInput = document.getElementById("farmNotes");
+
+      const name = nameInput ? nameInput.value.trim() : "";
+      const phone = phoneInput ? phoneInput.value.trim() : "";
+      const location = locationInput ? locationInput.value.trim() : "";
+      const serviceValue = serviceSelect ? serviceSelect.value : "";
+      const selectedOption = serviceSelect && serviceSelect.selectedIndex >= 0 ? serviceSelect.options[serviceSelect.selectedIndex] : null;
+      const problem = (selectedOption && selectedOption.value) ? selectedOption.text.trim() : "";
+      const notes = notesInput ? notesInput.value.trim() : "";
+
+      // Validation
+      if (!name) {
+        showFormError("برجاء إدخال الاسم بالكامل.", nameInput);
+        return;
+      }
+      if (name.length < 3) {
+        showFormError("برجاء إدخال اسم صحيح مكون من 3 أحرف على الأقل.", nameInput);
         return;
       }
 
+      if (!phone) {
+        showFormError("برجاء إدخال رقم الهاتف للتواصل.", phoneInput);
+        return;
+      }
       const phoneDigits = phone.replace(/\D/g, "");
-      if (phoneDigits.length < 8) {
-        formFeedback.textContent = "برجاء إدخال رقم هاتف صحيح للتواصل.";
-        formFeedback.className = "form-feedback error";
-        formFeedback.hidden = false;
+      if (phoneDigits.length < 8 || phoneDigits.length > 15) {
+        showFormError("برجاء إدخال رقم هاتف صحيح للتواصل (مثال: 01xxxxxxxxx).", phoneInput);
         return;
       }
 
-      formFeedback.textContent = `شكراً لك يا ${name}! تم تسجيل طلب المعاينة لمنطقة (${location}) بنجاح، وسيتواصل معك فريق Green Flow قريباً.`;
-      formFeedback.className = "form-feedback success";
-      formFeedback.hidden = false;
-      inspectionForm.reset();
-      showToast("تم استلام طلب المعاينة بنجاح!");
+      if (!location) {
+        showFormError("برجاء إدخال المحافظة أو موقع المزرعة.", locationInput);
+        return;
+      }
+
+      if (!serviceValue || !problem) {
+        showFormError("برجاء اختيار المشكلة الأساسية أو الخدمة المطلوبة.", serviceSelect);
+        return;
+      }
+
+      // Hide prior errors
+      if (formFeedback) {
+        formFeedback.hidden = true;
+        formFeedback.textContent = "";
+        formFeedback.className = "form-feedback";
+      }
+
+      isSubmitting = true;
+      toggleFormState(true);
+
+      const payload = {
+        name,
+        phone,
+        location,
+        problem,
+        notes
+      };
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 35000);
+
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify(payload),
+          redirect: "follow",
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+
+        let data;
+        try {
+          data = await response.json();
+        } catch (jsonErr) {
+          throw new Error("تعذر قراءة استجابة الخادم.");
+        }
+
+        if (!data || (data.success !== true && data.status !== "success")) {
+          const serverMsg = data && data.message ? data.message : "لم يتم تأكيد حفظ الطلب في النظام.";
+          throw new Error(serverMsg);
+        }
+
+        // Confirmed Success
+        if (formFeedback) {
+          formFeedback.textContent = `تم تسجيل طلب المعاينة بنجاح يا ${name}! سيتواصل معك فريق Green Flow في أقرب وقت لتحديد موعد الزيارة لموقعك في (${location}).`;
+          formFeedback.className = "form-feedback success";
+          formFeedback.hidden = false;
+        }
+
+        // Reset form ONLY on confirmed success
+        inspectionForm.reset();
+        showToast("تم استلام طلب المعاينة بنجاح!");
+      } catch (err) {
+        console.error("Submission failed:", err);
+
+        let userMsg = "حدث خطأ أثناء إرسال الطلب. برجاء التأكد من اتصال الإنترنت والمحاولة مرة أخرى.";
+        if (err.name === "AbortError") {
+          userMsg = "استغرق الخادم وقتاً أطول من المتوقع للاستجابة. برجاء المحاولة مجدداً.";
+        } else if (err.message && !err.message.includes("fetch")) {
+          userMsg = err.message;
+        }
+
+        if (formFeedback) {
+          formFeedback.textContent = userMsg;
+          formFeedback.className = "form-feedback error";
+          formFeedback.hidden = false;
+        }
+        showToast("تعذر إرسال الطلب، برجاء المحاولة لاحقاً.");
+      } finally {
+        isSubmitting = false;
+        toggleFormState(false);
+      }
     });
   }
 
